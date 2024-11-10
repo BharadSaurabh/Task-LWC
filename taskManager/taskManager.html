@@ -1,0 +1,47 @@
+<template>
+	<lightning-card>
+
+            <lightning-button variant="brand" label="New task" title="New task" onclick={handleView}></lightning-button>
+
+          <template if:true={isfrrvisble}>
+					<lightning-card variant="Narrow" title="Task Form" icon-name="standard:account">
+						<lightning-record-edit-form object-api-name="Task__c" 
+                        onsuccess={handleSucess}
+							onsubmit={handleSubmit}>
+							<lightning-messages></lightning-messages>
+							<div class="slds-p-left_x-large">
+
+								<lightning-input-field field-name="Name"></lightning-input-field>
+								<lightning-input-field field-name="Description__c"></lightning-input-field>
+
+								<lightning-input-field field-name="Due_Date__c" ></lightning-input-field>
+
+								<lightning-input-field field-name="Priority__c" ></lightning-input-field>
+
+								<div>
+									<lightning-input-field field-name="Status__c"  ></lightning-input-field>
+								</div>
+								<!-- submit -->
+
+								</br>
+								<div class="slds-align_absolute-center">
+									<lightning-button variant="brand" type="submit" label="Submit"></lightning-button>
+								</div>
+							</div>
+						</lightning-record-edit-form>
+					</lightning-card>
+          </template>
+
+      	<div style="height: 300px;">
+        <lightning-datatable
+            key-field="id"
+            data={data}
+            columns={column}
+            draft-values={draftValues}
+            onsave={handleSave}
+            hide-checkbox-column
+            inline-editable>
+        </lightning-datatable>
+        </div>
+	</lightning-card>
+</template>
