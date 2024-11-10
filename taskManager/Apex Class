@@ -1,0 +1,18 @@
+public class TaskApex {
+
+	@AuraEnabled(cacheable=true)
+	public static List<Task__c> tasklist(){
+
+		List<Task__c> datalist =[Select Id, Name, Description__c, Status__c,Due_Date__c	,Priority__c from Task__c];
+
+		return datalist;
+	}
+
+
+	@AuraEnabled(cacheable=true)
+	public static void updateTaskStatus(List<Task__c> tasksToUpdate){
+		update tasksToUpdate;
+	}
+	
+
+}
